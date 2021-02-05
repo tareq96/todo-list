@@ -1,0 +1,105 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.6;
+}
+
+@keyframes spinner {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}
+
+body.show-spinner .spin, body.show-spinner .bg-overlay {
+  display: block;
+}
+
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 10;
+  display: none;
+  cursor: pointer;
+}
+
+.spin {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  display: none;
+}
+
+.spin::before {
+  animation: spinner 0.8s linear infinite;
+  animation-play-state: inherit;
+  border: .25rem solid transparent;
+  border-bottom-color: #007bff;
+  border-right-color: #007bff;
+  border-radius: 50%;
+  content: "";
+  height: 2.8125rem;
+  width: 2.8125rem;
+  position: absolute;
+  top: 60%;
+  left: 5%;
+  transform: translate3d(-50%, -50%, 0);
+  will-change: transform;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title i {
+  font-size: 20px;
+}
+
+.title u {
+  text-decoration: none;
+}
+
+.edit-todo-input {
+  font-size: 20px;
+  padding-left: 5px;
+}
+
+.todo-actions i.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.add-todo-input, .edit-todo-input {
+  outline: none;
+}
+
+.add-todo-input:focus, .edit-todo-input:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.view-opt-label, .date-label {
+  font-size: 0.8rem;
+}
+
+.todo-actions {
+  visibility: hidden !important;
+}
+
+.todo-item:hover .todo-actions {
+  visibility: visible !important;
+}
+
+.todo-item.editing .todo-actions .edit-icon {
+  display: none !important;
+}
